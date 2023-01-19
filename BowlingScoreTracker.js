@@ -1,5 +1,9 @@
 function totalScore (scoreCard) {
   const totBowlCount = scoreCard.length;
+  if (totBowlCount > 21 || totBowlCount < 12) {
+    console.log("Score card is incomplete");
+    return -1;
+  }
   let i = 0;
   let frame = 1;
   let score = 0;
@@ -48,25 +52,27 @@ function totalScore (scoreCard) {
   return score;
 }
 
-function bestScore(scoreCards){
-    let totalScores=[];
-    for(let i in scoreCards){
-        totalScores.push(totalScore(scoreCards[i]));
+function bestScore (scoreCards) {
+  const totalScores = [];
+  for (const i in scoreCards) {
+    if (scoreCards[i] !== -1) {
+      totalScores.push(totalScore(scoreCards[i]));
     }
-    return (Math.max.apply(Math, totalScores));
+  }
+  return (Math.max(...totalScores));
 }
 
 module.exports = totalScore;
 
 const scoreCards = [[3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6],
-                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10],
-                    [6, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                ]
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10],
+  [6, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 10]
+];
 
-let totalScores = []                    
-for(let i in scoreCards){
-    totalScores.push(totalScore(scoreCards[i]));
+const totalScores = [];
+for (const i in scoreCards) {
+  totalScores.push(totalScore(scoreCards[i]));
 }
 
-console.log(totalScores)
-console.log(bestScore(scoreCards))
+console.log(totalScores);
+console.log(bestScore(scoreCards));
