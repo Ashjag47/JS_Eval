@@ -49,7 +49,27 @@ function totalScore (scoreCard) {
   return score;
 }
 
+function bestScore(scoreCards){
+    let totalScores=[];
+    for(let i in scoreCards){
+        //console.log(totalScore(scoreCards[i]));
+        totalScores.push(totalScore(scoreCards[i]));
+    }
+    return (Math.max.apply(Math, totalScores));
+}
+
 module.exports = totalScore;
 
-const scoreCard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10];
-console.log(totalScore(scoreCard));
+const scoreCards = [[3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10],
+                    [6, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                ]
+
+let totalScores = []                    
+for(let i in scoreCards){
+    //console.log(totalScore(scoreCards[i]));
+    totalScores.push(totalScore(scoreCards[i]));
+}
+
+console.log(totalScores)
+console.log(bestScore(scoreCards))
