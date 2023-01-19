@@ -1,6 +1,5 @@
 function totalScore (scoreCard) {
   const totBowlCount = scoreCard.length;
-  //    const curBowlCount = 1;
   let i = 0;
   let frame = 1;
   let score = 0;
@@ -52,7 +51,6 @@ function totalScore (scoreCard) {
 function bestScore(scoreCards){
     let totalScores=[];
     for(let i in scoreCards){
-        //console.log(totalScore(scoreCards[i]));
         totalScores.push(totalScore(scoreCards[i]));
     }
     return (Math.max.apply(Math, totalScores));
@@ -67,7 +65,6 @@ const scoreCards = [[3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6]
 
 let totalScores = []                    
 for(let i in scoreCards){
-    //console.log(totalScore(scoreCards[i]));
     totalScores.push(totalScore(scoreCards[i]));
 }
 
